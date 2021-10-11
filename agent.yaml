@@ -1,5 +1,4 @@
-- name: Install Datadog Agent
-  hosts: node 
+- hosts: node 
   become: yes
   user: ubuntu 
   get_url:
