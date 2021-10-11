@@ -7,7 +7,7 @@
       apt:
         name: ansible 
         state: present 
-        update_cache: yes
+        update_cachse: yes
 
     - name: Download the role 
       get_url:
