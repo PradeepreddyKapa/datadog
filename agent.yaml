@@ -3,8 +3,7 @@
   become: yes
   user: ubuntu 
   
-
-- name: Download Datadog role 
+- name: Dowload Datadog role for GitHub
   get_url:
     url: https://github.com/DataDog/ansible-datadog/archive/refs/heads/master.zip
     dest: /tmp/datadog.zip
