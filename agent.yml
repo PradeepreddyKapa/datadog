@@ -4,7 +4,7 @@
   user: ubuntu 
   tasks:
     - name: API-key
-      shell: DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=${API_KEY} DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+      shell: DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=d129150267ecb9d5db03f7b2abf88f5a DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
 
   roles:
     - { role: datadog.datadog, become: yes }
