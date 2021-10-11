@@ -1,5 +1,6 @@
 - name: Download Datadog role 
+  hosts: node
+  become: yes
   get_url:
     url: https://github.com/DataDog/ansible-datadog/archive/refs/heads/master.zip
     dest: /tmp/datadog.zip
-    
