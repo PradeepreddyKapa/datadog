@@ -3,29 +3,6 @@
   become: yes
   user: ubuntu 
   tasks:
-    - name: Install Ansible 
-      apt:
-        name: ansible 
-        state: present 
-        update_cache: yes
 
-    - name: Download the role 
-      get_url:
-        url: https://github.com/DataDog/ansible-datadog/archive/refs/heads/master.zip
-        dest: /tmp/datadog.zip
-
-    - name: Add directory
-      ansible.builtin.file:
-        path: /root/.ansible/roles
-        state: present
-    
-    - name: Add Directory
-      ansible.builtin.file:
-        path: /root/.ansible/roles/Datadog.datadog
-        state: absent
-    
-    - name: Unzip the role 
-      unarchive:
-        src: /tmp/datadog.zip
-        dest: /root/.ansible/roles/Datadog.datadog/
-        remote_src: yes
+    - name: API-key
+      shell: DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=d129150267ecb9d5db03f7b2abf88f5a DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
