@@ -1,6 +1,7 @@
-- name: Install Datadog agent role 
+- name: Install Datadog agent  
   hosts: node 
   become: yes
   user: ubuntu 
-  command: ansible-galaxy install Datadog.datadog
-  
+  tasks: 
+    - name: Download the role 
+      command: ansible-galaxy install Datadog.datadog
