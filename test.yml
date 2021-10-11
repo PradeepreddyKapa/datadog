@@ -1,0 +1,37 @@
+- name: Install Datadog Agent
+  hosts: servers
+  become: yes
+  user: ubuntu 
+  tasks:
+    - name: Install Ansible 
+      apt:
+        name: ansible 
+        state: present 
+        update_cache: yes
+
+    - name: Download the role 
+      get_url:
+        url: https://github.com/DataDog/ansible-datadog/archive/refs/heads/master.zip
+        dest: /tmp/datadog.zip
+    
+    - name: Unzip the role 
+      unarchive:
+        src: /tmp/datadog.zip
+        dest: /root/.ansible/roles/Datadog.datadog
+
+  roles:
+    - { role: datadog.datadog, become: yes }
+  vars:
+    datadog_api_key: "{{ datadog_api_key }}"
+    datadog_site: "datadoghq.com"
+    datadog_checks:
+      process:
+        init_config:
+        instances:
+          - name: ssh
+            search_string: ['ssh', 'sshd']
+          - name: syslog
+            search_string: ['rsyslog']
+            cpu_check_interval: 0.2
+            exact_match: true
+            ignore_denied_access: true
