@@ -1,13 +1,13 @@
-- name: Install Datadog Agent
-  hosts: node 
-  become: yes
-  user: ubuntu 
-  tasks:
-    - name: API-key
-      shell: DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=d129150267ecb9d5db03f7b2abf88f5a DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+# - name: Install Datadog Agent
+- hosts: servers
+#   become: yes
+#   user: ubuntu 
+#   tasks:
+    # - name: API-key
+    #   shell: DD_AGENT_MAJOR_VERSION=7 DD_API_KEY={{ datadog_api_key }} DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
 
   roles:
     - { role: datadog.datadog, become: yes }
   vars:
-    datadog_api_key: "d129150267ecb9d5db03f7b2abf88f5a"
+    datadog_api_key: "{{ datadog_api_key }}"
     datadog_site: "datadoghq.com"
