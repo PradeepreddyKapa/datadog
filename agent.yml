@@ -13,9 +13,19 @@
       get_url:
         url: https://github.com/DataDog/ansible-datadog/archive/refs/heads/master.zip
         dest: /tmp/datadog.zip
+
+    - name: Add directory
+      ansible.builtin.file:
+        path: /root/.ansible/roles
+        state: present
+    
+    - name: Add Directory
+      ansible.builtin.file:
+        path: /root/.ansible/roles/Datadog.datadog
+        state: absent
     
     - name: Unzip the role 
       unarchive:
         src: /tmp/datadog.zip
-        dest: /root/.ansible/roles/Datadog.datadog
+        dest: /root/.ansible/roles/Datadog.datadog/
         remote_src: yes
