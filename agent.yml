@@ -5,3 +5,16 @@
   vars:
     datadog_api_key: "{{ datadog_api_key }}"
     datadog_site: "datadoghq.com"
+    datadog_checks:
+      process:
+        init_config:
+        instances:
+          - name: ssh
+            search_string: ['ssh', 'sshd']
+          - name: syslog
+            search_string: ['rsyslog']
+            cpu_check_interval: 0.2
+            exact_match: true
+            ignore_denied_access: true
+# - name: install linux agent 
+#   shell: DD_AGENT_MAJOR_VERSION=7 DD_API_KEY="{{ datadog_api_key }}" DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
