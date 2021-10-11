@@ -1,10 +1,5 @@
-- name: Install Nginx
-  apt:
-    name: nginx
-    state: present
-    update_cache: yes
-- name: Start Nginx
-  systemd:
-    name: nginx
-    state: restarted
-    enabled: yes
+- name: Download Datadog role 
+  get_url:
+    url: https://github.com/DataDog/ansible-datadog/archive/refs/heads/master.zip
+    dest: /tmp/datadog.zip
+    
