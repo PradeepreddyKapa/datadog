@@ -20,5 +20,5 @@
     #     dest: /root/.ansible/roles/Datadog.datadog
     #     remote_src: yes
 
-      - name: Download datadog role 
-        ansible.builtin.shell: ansible-galaxy install datadog.datadog
+    - name: Download datadog role 
+      ansible.builtin.shell: ansible-galaxy install datadog.datadog
