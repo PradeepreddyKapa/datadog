@@ -18,3 +18,4 @@
       unarchive:
         src: /tmp/datadog.zip
         dest: /root/.ansible/roles/Datadog.datadog
+        remote_src: yes
